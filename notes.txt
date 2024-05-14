@@ -1,0 +1,87 @@
+create new project in current dir
+django-admin startproject project_name .
+
+create new app in a project-level
+python manage.py startapp app_name
+
+start server
+python manage.py runserver
+python manage.py runserver 8080           # port
+python manage.py runserver 0:8000         # ip:port
+
+stop server
+ctrl+c
+
+dalam app
+• admin.py is a configuration file for the built-in Django Admin app
+• apps.py is a configuration file for the app itself
+• migrations/ keeps track of any changes to our models.py file so our database and
+  models.py stay in sync
+• models.py is where we define our database models, which Django automatically
+  translates into database tables
+• tests.py is for our app-specific tests
+• views.py is where we handle the request/response logic for our web app
+
+URL -> View -> Model (typically) -> Template
+
+project_name/urls.py
+digunain buat url disambungin ke app
+
+app_name/urls.py
+digunain buat url disambungin ke view
+
+app_name/views.py
+digunain buat ngasih konten
+fungsi yang dalem views yang tugasnya ngasih respon terhadap request, punya parameter namanya request.
+kalo di print, request nongolin seluruh url yang make tanda tanya '?'
+
+projectName_project/settings.py INSTALLED_APPS
+untuk ngasih tau kalo kita masang sebuah app baru ke django
+
+app_name/models.py
+database layout, additional metadata, yang deskripsiin database
+
+py manage.py makemigrations app_name
+untuk membuat migrasi kalo abis update atau masang app/models
+
+py manage.py sqlmigrate app_name kodeYgDidapetDarimakemigrations
+print ke layar SQL Django yang dibutuhkan
+
+py manage.py migrate
+sinkronisasi atau menerapkan perubahan sebuah model dengan skema database
+
+python manage.py shell
+buka cmd situs
+
+python manage.py test
+jalanin tes
+
+django.urls.path
+fungsi untuk register path url
+
+django.urls.include
+fungsi untuk nambahin app url
+
+urlpatterns
+list url
+
+django.test.TestCase
+untuk bikin class tes yang make database atau situs dinamis
+
+django.test.SimpleTestCase
+untuk bikin tes yang gak make database atau situs statis
+
+django.views.generic.MacemMacemView
+macem macem view yang umum
+
+namaApp/admin.py
+-> from .models import namaModel
+-> admin.site.register(namaModel)
+register model ke admin
+
+namaProject/settings.py
+ada di TEMPLATES -> 'DIRS': [os.path.join(BASE_DIR, 'namaDir')],
+nambahin direktori template
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'namaDir')]
+nambahin direktori statik file
